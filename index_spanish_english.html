@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baribar Restaurant Istanbul — Döner Kebab Halal, C/ Rosselló 213, Barcelona</title>
+  <meta name="description"
+    content="Baribar Restaurant Istanbul — Halal döner kebab restaurant in Barcelona. Kebabs, dürüm, grilled meats, biryani, seafood and more. C/ Rosselló, 213.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Aref+Ruqaa:wght@400;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #0d2b2e;
+      --bg-panel: #123a3d;
+      --bg-panel-2: #0f3235;
+      --ember: #e08a46;
+      --ember-dark: #b4632a;
+      --ember-bright: #f2a25f;
+      --tile: #3fa8a0;
+      --cream: #f4eee1;
+      --muted: #a4bdbb;
+      --line: rgba(224, 138, 70, 0.25);
+      --radius: 2px;
+      --shadow-soft: 0 18px 40px rgba(4, 16, 18, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    body {
+      background: var(--bg-deep);
+      color: var(--cream);
+      font-family: 'Mulish', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Marcellus', serif;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--ember);
+      outline-offset: 3px;
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--tile);
+    }
+
+    /* ---------- Iznik tile motif ---------- */
+    .tile-band {
+      height: 34px;
+      width: 100%;
+      background-image:
+        radial-gradient(circle at 12.5% 50%, var(--ember) 0 3px, transparent 3.5px),
+        radial-gradient(circle at 37.5% 50%, var(--tile) 0 3px, transparent 3.5px),
+        radial-gradient(circle at 62.5% 50%, var(--ember) 0 3px, transparent 3.5px),
+        radial-gradient(circle at 87.5% 50%, var(--tile) 0 3px, transparent 3.5px);
+      background-size: 100px 34px;
+      background-repeat: repeat-x;
+      opacity: 0.55;
+    }
+
+    .tile-corner {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(135deg, var(--ember) 0 2px, transparent 2px),
+        linear-gradient(-135deg, var(--ember) 0 2px, transparent 2px);
+      background-size: 14px 14px;
+      background-position: top left, top right;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity .35s ease;
+    }
+
+    /* ---------- Halal badge ---------- */
+    .halal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--ember);
+      color: var(--ember);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 999px;
+    }
+
+    .halal-badge svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--ember);
+      fill: none;
+    }
+
+    /* ---------- Nav ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 37, 40, 0.88);
+      backdrop-filter: blur(10px) saturate(1.1);
+      -webkit-backdrop-filter: blur(10px) saturate(1.1);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 0 rgba(224, 138, 70, 0.08);
+    }
+
+    .nav-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 28px;
+      gap: 22px;
+    }
+
+    .brand {
+      font-family: 'Marcellus', serif;
+      font-size: 1.24rem;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand span {
+      color: var(--ember);
+    }
+
+    .brand small {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.56rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--tile);
+      margin-top: 3px;
+    }
+
+    nav {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    nav li {
+      flex-shrink: 0;
+    }
+
+    nav a {
+      white-space: nowrap;
+      display: inline-block;
+      text-decoration: none;
+      color: var(--muted);
+      padding: 8px 11px;
+      border-radius: var(--radius);
+      border-bottom: 1px solid transparent;
+      transition: color .25s ease, border-color .25s ease, background .25s ease;
+    }
+
+    nav a:hover {
+      color: var(--cream);
+      background: rgba(224, 138, 70, 0.08);
+    }
+
+    nav a.active {
+      color: var(--ember-bright);
+      border-color: var(--ember);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    .call-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bg-deep);
+      background: var(--ember);
+      border: 1px solid var(--ember);
+      padding: 9px 16px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+
+    .call-btn svg {
+      width: 13px;
+      height: 13px;
+      stroke: var(--bg-deep);
+      fill: none;
+    }
+
+    .call-btn:hover {
+      background: var(--ember-bright);
+      border-color: var(--ember-bright);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(224, 138, 70, 0.3);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--cream);
+      padding: 8px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+    }
+
+    @media (max-width:1180px) {
+      nav ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--bg-panel);
+        border-bottom: 1px solid var(--line);
+        box-shadow: var(--shadow-soft);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .35s ease;
+      }
+
+      nav ul.open {
+        max-height: 480px;
+        overflow-y: auto;
+      }
+
+      nav a {
+        display: block;
+        padding: 14px 24px;
+        border-bottom: 1px solid var(--line);
+        border-radius: 0;
+      }
+
+      nav a:hover {
+        background: rgba(224, 138, 70, 0.06);
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .call-btn span {
+        display: none;
+      }
+
+      .call-btn {
+        padding: 9px 11px;
+      }
+    }
+
+    @media (max-width:520px) {
+      .brand small {
+        display: none;
+      }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 92vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+
+      background-image:
+        radial-gradient(ellipse at 50% 0%, rgba(63, 168, 160, 0.16), transparent 55%),
+        url("images/logo.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: var(--bg-deep);
+    }
+
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(9, 30, 32, 0.72) 0%, rgba(9, 30, 32, 0.55) 40%, rgba(9, 30, 32, 0.88) 100%);
+      z-index: 1;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 90px 24px;
+      text-align: center;
+    }
+
+    .hero-cta {
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 13px 26px;
+      border: 1px solid transparent;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--ember);
+      border-color: var(--ember);
+      color: var(--bg-deep);
+    }
+
+    .btn-primary:hover {
+      background: var(--ember-bright);
+      border-color: var(--ember-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(224, 138, 70, 0.32);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--cream);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--tile);
+      color: var(--tile);
+      transform: translateY(-2px);
+    }
+
+    .smoke {
+      position: absolute;
+      bottom: 0;
+      z-index: 1;
+      width: 2px;
+      border-radius: 50%;
+      background: linear-gradient(to top, rgba(244, 238, 225, 0.0), rgba(244, 238, 225, 0.09), rgba(244, 238, 225, 0.0));
+      filter: blur(6px);
+      animation: rise 9s linear infinite;
+    }
+
+    .smoke.s1 {
+      left: 38%;
+      height: 220px;
+      animation-delay: 0s;
+    }
+
+    .smoke.s2 {
+      left: 47%;
+      height: 280px;
+      width: 4px;
+      animation-delay: 2.5s;
+    }
+
+    .smoke.s3 {
+      left: 55%;
+      height: 200px;
+      animation-delay: 5s;
+    }
+
+    .smoke.s4 {
+      left: 62%;
+      height: 250px;
+      width: 3px;
+      animation-delay: 1.2s;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) scaleX(1);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-320px) scaleX(1.6);
+        opacity: 0;
+      }
+    }
+
+    /* .hero-frame {
+      position: relative;
+      padding: 38px 44px;
+      border: 1px solid var(--line);
+    }
+
+    .hero-frame::before,
+    .hero-frame::after {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border: 1px solid var(--ember);
+    }
+
+    .hero-frame::before {
+      top: -1px;
+      left: -1px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .hero-frame::after {
+      bottom: -1px;
+      right: -1px;
+      border-left: none;
+      border-top: none;
+    } */
+
+    .hero-eyebrow {
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      line-height: 1.05;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: rgb(255, 200, 0);
+    }
+
+    .hero p.tagline {
+      margin-top: 18px;
+      color: rgb(255, 255, 255);
+      font-size: 1.05rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero .addr {
+      margin-top: 26px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color:rgb(255, 200, 0);
+      text-transform: uppercase;
+    }
+
+    .hero .addr a {
+      color: rgb(255, 200, 0);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ---------- Section shell ---------- */
+    section.menu-section {
+      padding: 70px 24px 84px;
+    }
+
+    section.menu-section.alt {
+      background: var(--bg-panel-2);
+    }
+
+    .section-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .section-head {
+      margin-bottom: 36px;
+      max-width: 640px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+      margin-top: 8px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin-top: 10px;
+      font-size: 0.98rem;
+    }
+
+    .section-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      color: var(--ember);
+      border: 1px dashed var(--line);
+      padding: 10px 14px;
+      margin-bottom: 28px;
+      max-width: 640px;
+    }
+
+    /* ---------- Global menu note ---------- */
+    .menu-note-global {
+      max-width: 1180px;
+      margin: 34px auto 34px;
+      padding: 20px 28px;
+      border: 1px solid var(--ember);
+      background: rgba(224, 138, 70, 0.09);
+      text-align: center;
+      box-shadow: 0 0 0 1px rgba(224, 138, 70, 0.08) inset;
+    }
+
+    .menu-note-global .note-label {
+      display: block;
+      margin-bottom: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ember);
+    }
+
+    .menu-note-global .note-text {
+      margin: 0;
+      color: var(--cream);
+      font-size: 1rem;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }
+
+    @media (max-width:720px) {
+      .menu-note-global {
+        margin: 28px 16px 28px;
+        padding: 17px 14px;
+      }
+
+      .menu-note-global .note-text {
+        font-size: 0.88rem;
+      }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    @media (max-width:980px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width:600px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .dish {
+      position: relative;
+      background: var(--bg-panel);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .5s ease, transform .5s ease, border-color .3s ease;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      color: inherit;
+      font: inherit;
+      display: block;
+    }
+
+    .dish.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .dish:hover,
+    .dish:focus-visible {
+      border-color: var(--ember);
+    }
+
+    .dish:hover .tile-corner,
+    .dish:focus-visible .tile-corner {
+      opacity: 1;
+    }
+
+    .dish-photo {
+      aspect-ratio: 4/3;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background:
+        linear-gradient(135deg, var(--bg-panel-2), var(--bg-deep));
+    }
+
+    .dish-photo svg {
+      width: 44px;
+      height: 44px;
+      stroke: var(--ember);
+      opacity: 0.85;
+    }
+
+    .dish-photo .ph-label {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .dish-photo .ph-tap {
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.06em;
+      color: var(--tile);
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    .dish-body {
+      padding: 18px 20px 22px;
+    }
+
+    .dish-body h3 {
+      font-size: 1.14rem;
+      color: var(--cream);
+    }
+
+    .dish-native {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.05em;
+      color: var(--tile);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .price-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .price-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      color: var(--cream);
+      background: rgba(224, 138, 70, 0.12);
+      border: 1px solid var(--line);
+      padding: 5px 10px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .price-chip b {
+      color: var(--ember);
+      font-size: 0.92rem;
+    }
+
+    .price-chip .tag {
+      font-size: 0.6rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .ingredients {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .ingredients span {
+      font-size: 0.68rem;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 4px 8px;
+      border-radius: var(--radius);
+    }
+
+    /* ---------- Modal ---------- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(6, 20, 22, 0.86);
+      backdrop-filter: blur(3px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-panel {
+      position: relative;
+      max-width: 640px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      background: var(--bg-panel);
+      border: 1px solid var(--ember);
+      transform: translateY(18px) scale(0.98);
+      transition: transform .3s ease;
+    }
+
+    .modal-overlay.open .modal-panel {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 2;
+      background: var(--bg-deep);
+      border: 1px solid var(--line);
+      color: var(--cream);
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      transition: border-color .2s ease, color .2s ease;
+    }
+
+    .modal-close:hover {
+      border-color: var(--ember);
+      color: var(--ember);
+    }
+
+    .modal-photo {
+      aspect-ratio: 16/9;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-deep));
+      position: relative;
+    }
+
+    .modal-photo svg {
+      width: 92px;
+      height: 92px;
+      stroke: var(--ember);
+      opacity: 0.9;
+    }
+
+    .modal-photo .ph-label {
+      position: absolute;
+      bottom: 12px;
+      right: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .modal-body {
+      padding: 28px 30px 32px;
+    }
+
+    .modal-eyebrow {
+      margin-bottom: 6px;
+    }
+
+    .modal-body h3 {
+      font-size: 1.7rem;
+    }
+
+    .modal-native {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.06em;
+      color: var(--tile);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .modal-desc {
+      margin-top: 18px;
+      color: var(--cream);
+      font-size: 0.98rem;
+      max-width: 56ch;
+    }
+
+    .modal-body .price-row {
+      margin-top: 22px;
+    }
+
+    .modal-body .price-chip {
+      font-size: 0.86rem;
+      padding: 7px 13px;
+    }
+
+    .modal-body .price-chip b {
+      font-size: 1rem;
+    }
+
+    .modal-body .ingredients {
+      margin-top: 20px;
+    }
+
+    .modal-body .ingredients-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      position: relative;
+      padding: 64px 24px 40px;
+      border-top: 1px solid var(--line);
+      background: var(--bg-panel-2);
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--ember) 20%, var(--tile) 50%, var(--ember) 80%, transparent);
+      opacity: 0.6;
+    }
+
+    .footer-brand {
+      max-width: 1180px;
+      margin: 0 auto 44px;
+    }
+
+    .footer-brand .brand {
+      font-size: 1.5rem;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 36px;
+    }
+
+    @media (max-width:720px) {
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    footer h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    footer p,
+    footer a {
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-decoration: none;
+    }
+
+    footer a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .2s ease;
+    }
+
+    footer a:hover {
+      color: var(--ember);
+    }
+
+    footer svg.foot-icon {
+      width: 15px;
+      height: 15px;
+      stroke: var(--tile);
+      fill: none;
+      flex-shrink: 0;
+    }
+
+    .foot-label {
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .foot-col p {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .foot-col p+p {
+      margin-top: 8px;
+    }
+
+    .foot-cta {
+      margin-top: 18px;
+      display: inline-flex;
+    }
+
+    .copyline {
+      max-width: 1180px;
+      margin: 44px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    /* ---------- Language switcher ---------- */
+    .lang-switcher {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .lang-btn {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      padding: 6px 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .64rem;
+      letter-spacing: .08em;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+
+    .lang-btn:hover,
+    .lang-btn.active {
+      color: var(--cream);
+      border-color: var(--ember);
+      background: rgba(224, 138, 70, .1);
+    }
+
+    /* ---------- About ---------- */
+    .about-section {
+      padding: 82px 24px;
+      background: var(--bg-panel-2);
+    }
+
+    .about-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .about-copy h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-top: 8px;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-top: 16px;
+
+
+      max-width: 100%;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+      max-width: 380px;
+    }
+
+    .about-stat {
+      border: 1px solid var(--line);
+      background: rgba(224, 138, 70, 0.05);
+      padding: 18px 20px;
+      transition: border-color .25s ease, background .25s ease;
+    }
+
+    .about-stat:hover {
+      border-color: var(--ember);
+      background: rgba(224, 138, 70, 0.09);
+    }
+
+    .about-stat strong {
+      display: block;
+      color: var(--ember);
+      font-family: 'Marcellus', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
+
+    .about-stat strong.ar {
+      font-family: 'Aref Ruqaa', serif;
+      font-weight: 700;
+      font-size: 2.6rem;
+      line-height: 1;
+      direction: rtl;
+    }
+
+    .about-stat span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .72rem;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+  .about-visual {
+  min-height: 600px;
+
+  background-image: url("images/logoo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70% auto;
+
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+    .about-photo {
+      min-height: 390px;
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--bg-panel), var(--bg-deep));
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .about-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .about-caption {
+      position: absolute;
+      z-index: 2;
+      left: 24px;
+      bottom: 24px;
+      right: 24px;
+      background: rgba(13, 43, 46, .9);
+      border: 1px solid var(--line);
+      padding: 14px 16px;
+      color: var(--cream);
+    }
+
+    @media (max-width:960px) {
+      .lang-switcher {
+        margin-left: auto;
+      }
+    }
+
+    @media (max-width:800px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .about-photo {
+        min-height: 300px;
+        
+      }
+    }
+
+
+    .dish-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .modal-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="nav-wrap">
+      <div class="brand">BARIBAR <span>ISTANBUL</span><small>Halal Döner &amp; Grill</small></div>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">MENU</button>
+      <nav>
+        <ul id="navList">
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#kebabs" data-i18n="nav.kebabs">Kebabs</a></li>
+          <li><a href="#graella" data-i18n="nav.graella">Parrilla</a></li>
+          <li><a href="#arros" data-i18n="nav.arros">Asiático</a></li>
+          <li><a href="#mar" data-i18n="nav.mar">Mariscos</a></li>
+          <li><a href="#entrants" data-i18n="nav.entrants">Entrantes</a></li>
+          <li><a href="#compartir" data-i18n="nav.compartir">Para compartir</a></li>
+          <li><a href="#begudes" data-i18n="nav.begudes">Bebidas</a></li>
+          <li><a href="#location" data-i18n="nav.location">On Som</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switcher" aria-label="Language selector">
+          <button type="button" class="lang-btn active" data-lang="es" aria-label="Español">ES</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        </div>
+        <a class="call-btn" href="tel:+34934155353" aria-label="Llamar al restaurante">
+          <svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8Z"/></svg>
+          <span>93 415 53 53</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="hero-scrim"></div>
+    <div class="smoke s1"></div>
+    <div class="smoke s2"></div>
+    <div class="smoke s3"></div>
+    <div class="smoke s4"></div>
+    <div class="hero-inner">
+      <div class="hero-frame">
+        <div class="hero-eyebrow">
+          <span class="eyebrow" data-i18n="hero.eyebrow">Döner · Kebabs &amp; Dürüm</span>
+          <span class="halal-badge">
+            <svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>
+            Halal
+          </span>
+        </div>
+        <h1>BARIBAR <em>ISTANBUL</em></h1>
+        <p class="tagline" data-i18n="hero.tagline">Döner, dürüm y parrilla halal en el corazón de Barcelona — carne al asador, brasas encendidas y recetas turcas de siempre.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#kebabs" data-i18n="hero.cta1">Ver la carta</a>
+          <a class="btn btn-ghost" href="tel:+34934155353" data-i18n="hero.cta2">Llamar ahora</a>
+        </div>
+        <div class="addr">C/ Rosselló, 213, Barcelona · <a href="https://www.google.com/maps/search/?api=1&query=Carrer+de+Rossell%C3%B3+213+Barcelona" target="_blank" rel="noopener" data-i18n="footer.maps">Ver en Google Maps →</a></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="about-section" id="about">
+    <div class="about-grid">
+      <div class="about-copy">
+        <div class="eyebrow" data-i18n="about.eyebrow">Our Story</div>
+        <h2 data-i18n="about.title">Almost 20 Years of Istanbul Flavour</h2>
+        <p data-i18n="about.p1">For almost two decades, Baribar Restaurant Istanbul has been bringing the flavours of
+          Turkish and Mediterranean-inspired cuisine to Barcelona.</p>
+        <p data-i18n="about.p2">From freshly prepared döner and dürüm to charcoal-grilled meats, rice dishes, seafood
+          and traditional favourites, our aim is simple: generous food, welcoming service and flavours made to be
+          enjoyed.</p>
+        <p data-i18n="about.p3">Whether you are joining us for a quick döner, a family meal or a table full of dishes to
+          share, we want every visit to feel warm, relaxed and memorable.</p>
+        <div class="about-stats">
+          <div class="about-stat">
+            <strong class="ar" lang="ar">حلال</strong>
+            <span data-i18n="about.statHalal">Comida Halal</span>
+          </div>
+          <div class="about-stat">
+            <strong>11–24h</strong>
+            <span data-i18n="about.statHours">Abierto cada día</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual" aria-hidden="true">
+        <svg viewBox="0 0 320 380" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+          
+         
+          
+          
+          
+          
+          
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="tile-band" aria-hidden="true"></div>
+
+  <!-- ============ KEBABS & DÜRÜM ============ -->
+  <section class="menu-section" id="kebabs">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow" data-i18n="section.kebabs.eyebrow">Döner · Kebabs &amp; Dürüm</div>
+          <h2 data-i18n="section.kebabs.title">Kebabs &amp; Dürüm</h2>
+          <p data-i18n="section.kebabs.desc">Carne cortada del asador, servida en pan de pita o envuelta en dürüm. Los
+            menús incluyen refresco y patatas.</p>
+        </div>
+      </div>
+      <div class="grid" id="grid-kebabs"></div>
+    </div>
+  </section>
+
+  <div class="tile-band" aria-hidden="true"></div>
+
+  <!-- ============ A LA GRAELLA ============ -->
+  <section class="menu-section alt" id="graella">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow" data-i18n="section.graella.eyebrow">A la brasa · Parrilla</div>
+          <h2 data-i18n="section.graella.title">Parrilla</h2>
+          <p data-i18n="section.graella.desc">Carnes a la plancha y a la brasa, servidas como plato completo con
+            ensalada y patatas.</p>
+        </div>
+      </div>
+      <div class="grid" id="grid-graella"></div>
+    </div>
+  </section>
+
+  <div class="tile-band" aria-hidden="true"></div>
+
+  <!-- ============ ARRÒS & BIRYANI ============ -->
+  <section class="menu-section" id="arros">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow" data-i18n="section.arros.eyebrow">Cocina asiática · Biryani &amp; Curry</div>
+          <h2 data-i18n="section.arros.title">Asiático</h2>
+          <p data-i18n="section.arros.desc">Arroz basmati, biryani y currys especiados, con opciones vegetarianas.</p>
+        </div>
+      </div>
+      <div class="grid" id="grid-arros"></div>
+    </div>
+  </section>
+
+  <div class="tile-band" aria-hidden="true"></div>
+
+  <!-- ============ DEL MAR ============ -->
+  <section class="menu-section alt" id="mar">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow" data-i18n="section.mar.eyebrow">Pescado &amp; Marisco · Del mar</div>
+          <h2 data-i18n="section.mar.title">Mariscos</h2>
+          <p data-i18n="section.mar.desc">Pescado fresco y marisco a la plancha o rebozado.</p>
+        </div>
+      </div>
+      <div class="grid" id="grid-mar"></div>
+    </div>
+  </section>
+
+  <div class="tile-band" aria-hidden="true"></div>
+
+  <!-- ============ ENTRANTS ============ -->
+  <section class="menu-section" id="entrants">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow" data-i18n="section.entrants.eyebrow">Para empezar · Entrantes</div>
+          <h2 data-i18n="section.entrants.title">Entrantes &amp; Acompañamientos</h2>
+          <p data-i18n="section.entrants.desc">Platos pequeños, ensaladas y acompañamientos — también nuestro menú
+            infantil.</p>
+        </div>
+      </div>
+      <div class="grid" id="grid-entrants"></div>
+    </div>
+  </section>
+
+  <div class="tile-band" aria-hidden="true"></div>
+
+  <!-- ============ PER COMPARTIR ============ -->
+  <section class="menu-section alt" id="compartir">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow" data-i18n="section.compartir.eyebrow">Para la mesa · Platos grandes</div>
+          <h2 data-i18n="section.compartir.title">Para compartir</h2>
+          <p data-i18n="section.compartir.desc">Grandes bandejas pensadas para compartir entre dos o más comensales.</p>
+        </div>
+      </div>
+      <div class="grid" id="grid-compartir"></div>
+    </div>
+  </section>
+
+  <div class="tile-band" aria-hidden="true"></div>
+
+  <!-- ============ BEGUDES ============ -->
+  <section class="menu-section" id="begudes">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow" data-i18n="section.begudes.eyebrow">Para beber · Bebidas</div>
+          <h2 data-i18n="section.begudes.title">Bebidas</h2>
+          <p data-i18n="section.begudes.desc">Refrescos, agua, batidos naturales, té y café.</p>
+        </div>
+      </div>
+
+      <div class="grid" id="grid-begudes"></div>
+    </div>
+  </section>
+
+  <div class="menu-note-global">
+    <span class="note-label" data-i18n="menu.note.label">Aviso</span>
+    <p class="note-text" data-i18n="menu.note">Cada plato con queso: +1,00 € — Suplemento de terraza: +0,70 €</p>
+  </div>
+
+  <footer id="location">
+    <div class="footer-brand">
+      <div class="brand">BARIBAR <span>ISTANBUL</span></div>
+    </div>
+    <div class="footer-inner">
+      <div class="foot-col">
+        <div class="eyebrow foot-label" data-i18n="footer.cuisine">Döner Kebab Halal</div>
+        <p>
+          <svg class="foot-icon" viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
+          C/ Rosselló, 213, Barcelona
+        </p>
+        <p class="foot-cta"><a
+            href="https://www.google.com/maps/search/?api=1&query=Carrer+de+Rossell%C3%B3+213+Barcelona" target="_blank"
+            rel="noopener" data-i18n="footer.maps">Ver en Google Maps →</a></p>
+      </div>
+      <div class="foot-col">
+        <div class="eyebrow foot-label" data-i18n="footer.hours">Horario</div>
+        <p>
+          <svg class="foot-icon" viewBox="0 0 24 24" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <span data-i18n="footer.open">11:00 AM – 12:00 AM</span>
+        </p>
+      </div>
+      <div class="foot-col">
+        <div class="eyebrow foot-label" data-i18n="footer.contact">Contacto</div>
+        <p><a href="tel:+34934155353">
+            <svg class="foot-icon" viewBox="0 0 24 24" stroke-width="1.6"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8Z"/></svg>
+            93 415 53 53
+          </a></p>
+      </div>
+    </div>
+    <div class="copyline">
+      <span>© <span id="year"></span> Baribar Restaurant Istanbul — C/ Rosselló, 213, Barcelona.</span>
+      <span data-i18n="footer.disclaimer">Menú de referència; plats, ingredients i preus poden variar.</span>
+    </div>
+  </footer>
+
+  <!-- ============ MODAL ============ -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Tancar">✕</button>
+      <div class="modal-photo" id="modalPhoto"><span class="ph-label">photo</span></div>
+      <div class="modal-body">
+        <div class="eyebrow modal-eyebrow" id="modalCategory"></div>
+        <h3 id="modalTitle"></h3>
+        <div class="modal-native" id="modalNative"></div>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="price-row" id="modalPrice"></div>
+        <span class="ingredients-label">Ingredients</span>
+        <div class="ingredients" id="modalIngredients"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+
+    /* ---------- Safe multilingual UI ---------- */
+    const UI_TRANSLATIONS = {
+      es: {
+        'menu.note.label': 'Aviso', 'menu.note': 'Cada plato con queso: +1,00 € — Suplemento de terraza: +0,70 €',
+        'nav.about': 'Sobre nosotros', 'nav.kebabs': 'Kebabs', 'nav.graella': 'Parrilla',
+        'nav.arros': 'Asiático', 'nav.mar': 'Mariscos', 'nav.entrants': 'Entrantes',
+        'nav.compartir': 'Para compartir', 'nav.begudes': 'Bebidas', 'nav.location': 'Ubicación',
+        'hero.eyebrow': 'Döner · Kebabs & Dürüm', 'hero.tagline': 'Döner, dürüm y parrilla halal en el corazón de Barcelona — carne al asador, brasas encendidas y recetas turcas de siempre.',
+        'hero.cta1': 'Ver la carta', 'hero.cta2': 'Llamar ahora',
+        'about.eyebrow': 'Nuestra historia', 'about.title': 'Casi 20 años de sabor de Estambul',
+        'about.p1': 'Desde hace casi dos décadas, Baribar Restaurant Istanbul lleva los sabores de la cocina turca y de inspiración mediterránea a Barcelona.',
+        'about.p2': 'Desde el döner y el dürüm preparados al momento hasta las carnes a la brasa, arroces, pescado y platos tradicionales, nuestro objetivo es sencillo: comida generosa, trato cercano y sabores para disfrutar.',
+        'about.p3': 'Ya sea para un döner rápido, una comida en familia o una mesa llena de platos para compartir, queremos que cada visita sea agradable y memorable.',
+        'about.statYears': 'Casi 20 años', 'about.statHalal': 'Comida halal', 'about.statHours': 'Abierto cada día', 'about.photo': 'Añade aquí una foto del restaurante',
+        'about.caption': 'Un sabor de Estambul en el corazón de Barcelona.',
+        'section.kebabs.eyebrow': 'Döner · Kebabs & Dürüm', 'section.kebabs.title': 'Kebabs & Dürüm',
+        'section.kebabs.desc': 'Carne cortada del asador, servida en pan de pita o envuelta en dürüm. Los menús incluyen refresco y patatas.',
+        'section.graella.eyebrow': 'A la brasa · Parrilla', 'section.graella.title': 'Parrilla',
+        'section.graella.desc': 'Carnes a la plancha y a la brasa, servidas como plato completo con ensalada y patatas.',
+        'section.arros.eyebrow': 'Cocina asiática · Biryani & Curry', 'section.arros.title': 'Asiático',
+        'section.arros.desc': 'Arroz basmati, biryani y currys especiados, con opciones vegetarianas.',
+        'section.mar.eyebrow': 'Pescado & Marisco · Del mar', 'section.mar.title': 'Mariscos',
+        'section.mar.desc': 'Pescado fresco y marisco a la plancha o rebozado.',
+        'section.entrants.eyebrow': 'Para empezar · Entrantes', 'section.entrants.title': 'Entrantes & Acompañamientos',
+        'section.entrants.desc': 'Platos pequeños, ensaladas y acompañamientos — también nuestro menú infantil.',
+        'section.compartir.eyebrow': 'Para la mesa · Platos grandes', 'section.compartir.title': 'Para compartir',
+        'section.compartir.desc': 'Grandes bandejas pensadas para compartir entre dos o más comensales.',
+        'section.begudes.eyebrow': 'Para beber · Bebidas', 'section.begudes.title': 'Bebidas',
+        'section.begudes.desc': 'Refrescos, agua, batidos naturales, té y café.',
+        'footer.cuisine': 'Döner Kebab Halal', 'footer.maps': 'Ver en Google Maps →', 'footer.hours': 'Horario',
+        'footer.open': '11:00 AM – 12:00 AM', 'footer.hoursNote': '',
+        'footer.disclaimer': 'Menú de referencia; platos, ingredientes y precios pueden variar.',
+        'footer.contact': 'Contacto', 'footer.rights': 'Todos los derechos reservados.',
+        'modal.photo': 'foto', 'modal.close': 'Cerrar'
+      },
+      en: {
+        'menu.note.label': 'PLEASE NOTE', 'menu.note': 'Cheese with any dish: +€1.00 — Terrace surcharge: +€0.70',
+        'nav.about': 'About us', 'nav.kebabs': 'Kebabs', 'nav.graella': 'Grill',
+        'nav.arros': 'Asian', 'nav.mar': 'Seafood', 'nav.entrants': 'Starters',
+        'nav.compartir': 'Sharing', 'nav.begudes': 'Drinks', 'nav.location': 'Location',
+        'hero.eyebrow': 'Döner · Kebabs & Dürüm', 'hero.tagline': 'Halal döner, dürüm and grilled food in the heart of Barcelona — spit-roasted meat, live coals and traditional Turkish recipes.',
+        'hero.cta1': 'View the menu', 'hero.cta2': 'Call now',
+        'about.eyebrow': 'Our story', 'about.title': 'Almost 20 Years of Istanbul Flavour',
+        'about.p1': 'For almost two decades, Baribar Restaurant Istanbul has been bringing the flavours of Turkish and Mediterranean-inspired cuisine to Barcelona.',
+        'about.p2': 'From freshly prepared döner and dürüm to charcoal-grilled meats, rice dishes, seafood and traditional favourites, our aim is simple: generous food, welcoming service and flavours made to be enjoyed.',
+        'about.p3': 'Whether you are joining us for a quick döner, a family meal or a table full of dishes to share, we want every visit to feel warm, relaxed and memorable.',
+        'about.statYears': 'Almost 20 years', 'about.statHalal': 'Halal food', 'about.statHours': 'Open every day', 'about.photo': 'Add restaurant photo here',
+        'about.caption': 'A taste of Istanbul in the heart of Barcelona.',
+        'section.kebabs.eyebrow': 'Döner · Kebabs & Dürüm', 'section.kebabs.title': 'Kebabs & Dürüm',
+        'section.kebabs.desc': 'Carved from the spit and served in pita bread or wrapped in dürüm. Menus include a soft drink and fries.',
+        'section.graella.eyebrow': 'Over the coals · Grill', 'section.graella.title': 'Grill',
+        'section.graella.desc': 'Grilled and charcoal-cooked meats served as complete plates with salad and fries.',
+        'section.arros.eyebrow': 'Asian kitchen · Biryani & Curry', 'section.arros.title': 'Asian',
+        'section.arros.desc': 'Basmati rice, biryani and spiced curries, including vegetarian options.',
+        'section.mar.eyebrow': 'Fish & Seafood · From the sea', 'section.mar.title': 'Seafood',
+        'section.mar.desc': 'Fresh fish and seafood, grilled or fried.',
+        'section.entrants.eyebrow': 'To start · Starters', 'section.entrants.title': 'Starters & Sides',
+        'section.entrants.desc': 'Small plates, salads and sides — including our children’s menu.',
+        'section.compartir.eyebrow': 'For the table · Large plates', 'section.compartir.title': 'For Sharing',
+        'section.compartir.desc': 'Large platters designed to share between two or more guests.',
+        'section.begudes.eyebrow': 'To drink · Drinks', 'section.begudes.title': 'Drinks',
+        'section.begudes.desc': 'Soft drinks, water, fresh milkshakes, tea and coffee.',
+        'footer.cuisine': 'Halal Döner Kebab', 'footer.maps': 'View on Google Maps →', 'footer.hours': 'Opening hours',
+        'footer.open': '11:00 AM – 12:00 AM', 'footer.hoursNote': '',
+        'footer.disclaimer': 'Reference menu; dishes, ingredients and prices may vary.',
+        'footer.contact': 'Contact', 'footer.rights': 'All rights reserved.',
+        'modal.photo': 'photo', 'modal.close': 'Close'
+
+      }
+    };
+
+    let CURRENT_LANG = localStorage.getItem('baribarLang');
+    if (CURRENT_LANG !== 'es' && CURRENT_LANG !== 'en') CURRENT_LANG = 'es';
+
+
+    function refreshMenuLanguage() {
+      document.querySelectorAll('.dish').forEach(function (btn) {
+        const item = FLAT_ITEMS[Number(btn.dataset.id)];
+        if (!item) return;
+        const nativeEl = btn.querySelector('.dish-native');
+        const titleEl = btn.querySelector('h3');
+        const ingredientsEl = btn.querySelector('.ingredients');
+        if (nativeEl) nativeEl.textContent = menuText(item, 'native');
+        if (titleEl) titleEl.textContent = menuText(item, 'name');
+        if (ingredientsEl) ingredientsEl.innerHTML = ingredientsHTML(item);
+        const priceEl = btn.querySelector('.price-row');
+        if (priceEl) priceEl.innerHTML = priceRowHTML(item);
+      });
+    }
+
+    function applyLanguage(lang) {
+      if (!UI_TRANSLATIONS[lang]) lang = 'es';
+      CURRENT_LANG = lang;
+      localStorage.setItem('baribarLang', lang);
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        const key = el.getAttribute('data-i18n');
+        if (UI_TRANSLATIONS[lang][key]) el.textContent = UI_TRANSLATIONS[lang][key];
+      });
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+      refreshMenuLanguage();
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () { applyLanguage(btn.getAttribute('data-lang')); });
+    });
+
+
+    /* ---------- Icon library ---------- */
+    const ICONS = {
+      wrap: '<path d="M4 12c0-4 4-7 8-7s8 3 8 7-4 9-8 9-8-5-8-9Z"/><path d="M6 10h12"/>',
+      skewer: '<path d="M4 12h16M7 12v6M11 12v6M15 12v6M19 12v6"/>',
+      rice: '<circle cx="12" cy="13" r="7"/><path d="M7 9c1-2 3-3 5-3s4 1 5 3"/>',
+      fish: '<path d="M3 12c4-5 12-5 16 0-4 5-12 5-16 0Z"/><path d="M19 12l3-3v6l-3-3Z"/>',
+      plate: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/>',
+      drink: '<path d="M8 3h8l-1 6H9L8 3Z"/><path d="M7 9h10l-1 12H8L7 9Z"/>',
+      shake: '<path d="M9 3h6l-1 5H10L9 3Z"/><path d="M8 8h8l-1.4 12a1 1 0 0 1-1 1H10.4a1 1 0 0 1-1-1L8 8Z"/><path d="M14 6l3-2"/>',
+      burger: '<path d="M4 10c0-3 4-5 8-5s8 2 8 5"/><path d="M4 12h16"/><path d="M5 15h14l-1 3H6l-1-3Z"/>',
+      chop: '<path d="M4 18h16M6 18v-4M18 18v-4M8 14h8l-1-8H9l-1 8Z"/>',
+      falafel: '<circle cx="9" cy="10" r="3"/><circle cx="15" cy="14" r="3"/><circle cx="9" cy="17" r="2"/>',
+      platter: '<rect x="4" y="6" width="16" height="12" rx="1"/><path d="M4 10h16"/>',
+      cup: '<path d="M6 3h9l1 6a5 5 0 0 1-11 0l1-6Z"/><path d="M15 6h2a2 2 0 0 1 0 4h-1"/>',
+      tea: '<path d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8Z"/><path d="M16 9h1a2 2 0 0 1 0 4h-1"/>'
+    };
+
+    function svgIcon(key) {
+      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">' + (ICONS[key] || ICONS.plate) + '</svg>';
+    }
+
+    /* ---------- Menu data (from the printed menu boards) ---------- */
+    const CATEGORIES = [
+      {
+        id: 'kebabs', gridId: 'grid-kebabs', label: 'Kebabs & Dürüm',
+        items: [
+          {
+            name: "Döner Kebab", native: "Pollastre / Vedella / Mixt / Falafel", icon: 'wrap',
+            solo: "6,50", menu: "10,50",
+            desc: "El clàssic döner turc, tallat directament de l'ast vertical i servit calent dins de pa pita amb amanida fresca. Tria pollastre, vedella, mixt o falafel. El menú inclou refresc i patates.",
+            ingredients: ["Carn de döner", "Pa pita", "Enciam", "Tomàquet", "Ceba", "Salsa"]
+          },
+          {
+            name: "Döner Solament Carn", native: "Solo Carne", icon: 'wrap',
+            price: "7,50",
+            desc: "El mateix döner clàssic, però només amb carn i sense pa — ideal per acompanyar amb arròs o per menjar sense hidrats.",
+            ingredients: ["Carn de döner", "Enciam", "Tomàquet", "Ceba"]
+          },
+          {
+            name: "Dürüm Kebab", native: "Pollastre / Vedella / Mixt / Falafel", icon: 'wrap',
+            solo: "6,50", menu: "10,50",
+            desc: "Döner embolicat en una tortilla de blat fina, torrada a la planxa amb amanida i patates a dins. El menú inclou refresc i patates.",
+            ingredients: ["Tortilla de blat", "Carn de döner", "Enciam", "Tomàquet", "Ceba vermella", "Patates"]
+          },
+          {
+            name: "Dürüm Solament Carn", native: "Solo Carne", icon: 'wrap',
+            price: "7,50",
+            desc: "Dürüm només de carn, sense verdures extra, per a qui vol el sabor pur del döner.",
+            ingredients: ["Tortilla de blat", "Carn de döner", "Amanida"]
+          },
+          {
+            name: "Dürüm Seekh Kebab", native: "Pollastre / Pollo", icon: 'skewer',
+            solo: "9,50", menu: "12,50",
+            desc: "Broquetes de pollastre picat i especiat, grillades a la brasa i embolicades en dürüm amb amanida fresca i patates.",
+            ingredients: ["Pollastre picat", "Espècies", "Tortilla", "Amanida", "Patates"]
+          },
+          {
+            name: "Dürüm Tikka Boti", native: "Pollastre / Pollo", icon: 'wrap',
+            solo: "9,50", menu: "12,50",
+            desc: "Trossos de pollastre marinat en iogurt i espècies a l'estil tikka, grillats i servits calents en dürüm.",
+            ingredients: ["Pollastre marinat", "Iogurt", "Espècies", "Tortilla", "Amanida"]
+          },
+          {
+            name: "Dürüm Kofta Kebab", native: "Vedella / Ternera", icon: 'wrap',
+            solo: "11,50", menu: "13,50",
+            desc: "Kofta de vedella picada i especiada, grillada al caliu i enrotllada en dürüm calent amb amanida.",
+            ingredients: ["Vedella picada", "Espècies", "Tortilla", "Amanida", "Patates"]
+          },
+          {
+            name: "Adana Dürüm", native: "Cordero / Ternera — Xai / Vedella", icon: 'wrap',
+            solo: "9,50", menu: "12,50",
+            desc: "El clàssic kebab d'Adana: carn de xai o vedella picada amb pebre vermell picant, grillada a la brasa i enrotllada en dürüm.",
+            ingredients: ["Xai o vedella picada", "Pebre vermell", "Greix de cua", "Ceba amb sumac"]
+          },
+          {
+            name: "Plat Combinat", native: "Pollastre / Vedella / Mixt", icon: 'platter',
+            solo: "10,00", menu: "12,50",
+            desc: "Un plat generós amb la teva carn preferida, acompanyada d'amanida, patates i pa. El menú inclou refresc.",
+            ingredients: ["Carn de döner", "Patates", "Amanida", "Pa"]
+          },
+          {
+            name: "Plat de Falafel", native: "Plato de Falafel", icon: 'falafel',
+            solo: "10,00", menu: "12,50",
+            desc: "Boletes de falafel casolanes fetes amb cigrons i espècies, servides amb amanida, salsa i patates. Opció vegetariana.",
+            ingredients: ["Falafel de cigrons", "Amanida", "Salsa tahini", "Pa", "Patates"]
+          }
+        ]
+      },
+      {
+        id: 'graella', gridId: 'grid-graella', label: 'A la Graella',
+        items: [
+          {
+            name: "Stick de Pollastre", native: "Pincho de Pollo", icon: 'skewer', price: "13,50",
+            desc: "Broqueta de pollastre marinat a la brasa, servida amb patates fregides i amanida fresca.",
+            ingredients: ["Pollastre marinat", "Brotxeta", "Patates", "Amanida"]
+          },
+          {
+            name: "Barregeu la Graella", native: "Mix Grill", icon: 'chop', price: "16,50",
+            desc: "Selecció del xef de carns grillades a la brasa, servides juntes en un sol plat amb patates i amanida.",
+            ingredients: ["Selecció de carns", "Patates", "Amanida"]
+          },
+          {
+            name: "Bistec a la Planxa", native: "Bistec a la Plancha", icon: 'chop', price: "10,50",
+            desc: "Bistec de vedella a la planxa, senzill i saborós, amb patates fregides i amanida.",
+            ingredients: ["Bistec de vedella", "Patates", "Amanida"]
+          },
+          {
+            name: "Pit de Pollastre", native: "Pechugas de Pollo", icon: 'plate', price: "11,90",
+            desc: "Pit de pollastre a la planxa, tendre i lleuger, amb guarnició de patates i tomàquet.",
+            ingredients: ["Pit de pollastre", "Tomàquet", "Patates"]
+          },
+          {
+            name: "Entrecot a la Planxa", native: "Plancha", icon: 'chop', price: "17,90",
+            desc: "Tall d'entrecot de vedella a la planxa, servit amb amanida fresca, olives i patates.",
+            ingredients: ["Entrecot de vedella", "Amanida", "Olives", "Patates"]
+          },
+          {
+            name: "Costelles de Xai", native: "Costillas de Cordero", icon: 'chop', price: "19,50",
+            desc: "Costelles de xai grillades al punt, amb el seu sabor característic, acompanyades d'amanida i olives.",
+            ingredients: ["Costelles de xai", "Olives", "Amanida", "Patates"]
+          },
+          {
+            name: "Plat d'Adana", native: "Ensaladas / Patatas", icon: 'skewer', price: "12,90",
+            desc: "El kebab d'Adana servit com a plat complet, amb arròs, amanida i patates.",
+            ingredients: ["Kebab d'Adana", "Arròs", "Amanida", "Patates"]
+          },
+          {
+            name: "Chuletón", native: "Vedella / Ternera", icon: 'chop', price: "18,50",
+            desc: "Una peça generosa de chuletón de vedella a la brasa, per als amants de la carn, amb amanida i olives.",
+            ingredients: ["Chuletón de vedella", "Amanida", "Olives", "Patates"]
+          },
+          {
+            name: "Hamburguesa Plate", native: "Pollastre / Vedella", icon: 'burger', price: "10.50",
+            desc: "Hamburguesa Plate  casolana de vedella o pollastre amb patates y ensalada.",
+            ingredients: ["Tortitas de carne de res", "Patates", "Ensalada"]
+          },
+          {
+            name: "Plat Seekh Kebab", native: "Plato Seekh Kebab", icon: 'skewer', price: "13,50",
+            desc: "Broquetes de seekh kebab grillades, servides com a plat complet amb amanida, tomàquet i patates.",
+            ingredients: ["Broquetes de carn especiada", "Amanida", "Tomàquet", "Patates"]
+          },
+          {
+            name: "Hamburguesa", native: "Pollastre / Vedella", icon: 'burger', solo: "6,50", menu: "9,50",
+            desc: "Hamburguesa casolana de vedella o pollastre amb patates. El menú inclou refresc.",
+            ingredients: ["Hamburguesa de vedella o pollastre", "Pa", "Patates", "Formatge opcional"]
+          },
+        ]
+      },
+      {
+        id: 'arros', gridId: 'grid-arros', label: 'Arròs & Biryani',
+        items: [
+          {
+            name: "Biryani de Pollastre", native: "Arròs basmati amb pollastre", icon: 'rice', price: "11,50",
+            desc: "Arròs basmati aromàtic cuit amb pollastre i una barreja d'espècies a l'estil biryani.",
+            ingredients: ["Arròs basmati", "Pollastre", "Espècies biryani"]
+          },
+          {
+            name: "Pollastre Curri", native: "Pollo Curry", icon: 'plate', price: "12,50",
+            desc: "Pollastre cuinat lentament en una salsa de curri especiada, un plat de cullera ben reconfortant.",
+            ingredients: ["Pollastre", "Salsa de curri", "Espècies"]
+          },
+          {
+            name: "Biryani Vegetal", native: "Arròs basmati amb verdures", icon: 'rice', price: "10,90",
+            desc: "Versió vegetariana del biryani, amb verdures de temporada i el mateix punt d'espècies.",
+            ingredients: ["Arròs basmati", "Verdures de temporada", "Espècies"]
+          },
+          {
+            name: "Arròs amb Pollastre Curri", native: "Arroz con Pollo Curry", icon: 'rice', price: "11,50",
+            desc: "Arròs blanc servit amb pollastre cuinat en salsa de curri a part.",
+            ingredients: ["Arròs", "Pollastre", "Salsa de curri"]
+          },
+          {
+            name: "Cigrons", native: "Chana", icon: 'plate', price: "9,90",
+            desc: "Guisat de cigrons a l'estil \"chana masala\", especiat i servit amb pa.",
+            ingredients: ["Cigrons", "Tomàquet", "Espècies", "Pa"]
+          },
+          {
+            name: "Okra", native: "Bhindi", icon: 'plate', price: "11,50",
+            desc: "Okra guisada amb tomàquet, ceba i espècies, un clàssic vegetarià del sud d'Àsia.",
+            ingredients: ["Okra", "Tomàquet", "Ceba", "Espècies"]
+          },
+          {
+            name: "Arròs Blanc", native: "Arroz Blanco", icon: 'rice', price: "5,50",
+            desc: "Arròs basmati blanc al vapor, l'acompanyant perfecte per a qualsevol curri.",
+            ingredients: ["Arròs basmati al vapor"]
+          }
+        ]
+      },
+      {
+        id: 'mar', gridId: 'grid-mar', label: 'Del Mar',
+        items: [
+
+          {
+            name: "Sardines a la Planxa", native: "Sardinas a la Plancha", icon: 'fish', price: "10,90",
+            desc: "Sardines fresques a la planxa amb un raig de llimona i oli d'oliva.",
+            ingredients: ["Sardines fresques", "Llimona", "Oli d'oliva"]
+          },
+          {
+            name: "Salmó", native: "Salmón", icon: 'fish', price: "16,90",
+            desc: "Filet de salmó a la planxa, servit amb patates i amanida fresca.",
+            ingredients: ["Salmó", "Patates", "Amanida"]
+          },
+          {
+            name: "Gambes", native: "Gambas", icon: 'fish', price: "17,50",
+            desc: "Gambes grillades a la planxa amb all i un toc de llimona.",
+            ingredients: ["Gambes", "All", "Llimona"]
+          },
+          {
+            name: "Peix Daurada", native: "Pescado Dorada", icon: 'fish', price: "16,90",
+            desc: "Dorada sencera a la planxa, servida amb amanida i llimona.",
+            ingredients: ["Dorada sencera", "Llimona", "Amanida"]
+          }
+        ]
+      },
+      {
+        id: 'entrants', gridId: 'grid-entrants', label: 'Entrants',
+        items: [
+
+          {
+            name: "Nuggets de Pollastre", native: "8 unitats", icon: 'burger', price: "10,50",
+            desc: "Vuit nuggets de pollastre arrebossats, cruixents per fora i tendres per dins, amb salsa.",
+            ingredients: ["Pollastre arrebossat", "Salsa"]
+          },
+          {
+            name: "Hummus", native: "Hummus", icon: 'plate', price: "7,90",
+            desc: "Puré cremós de cigrons i tahini amb oli d'oliva i llimona, servit amb pa calent.",
+            ingredients: ["Cigrons", "Tahini", "Llimona", "All", "Oli d'oliva", "Pa"]
+          },
+          {
+            name: "Kofta", native: "Kofta", icon: 'chop', price: "16,50",
+            desc: "Boletes de kofta de carn grillades a la brasa, servides amb patates fregides.",
+            ingredients: ["Kofta de carn", "Patates"]
+          },
+          {
+            name: "Alitas de Pollastre", native: "Alitas de Pollo", icon: 'burger', price: "10,90",
+            desc: "Ales de pollastre grillades, servides amb amanida i salsa.",
+            ingredients: ["Ales de pollastre", "Amanida", "Salsa"]
+          },
+          {
+            name: "Patates amb Ous Fregits", native: "Patatas con Huevos Fritos", icon: 'plate', price: "7,90",
+            desc: "Patates fregides amb dos ous ferrats per sobre — senzill i reconfortant.",
+            ingredients: ["Patates fregides", "Ous ferrats"]
+          },
+          {
+            name: "Amanida Mixta", native: "Ensalada Mixta", icon: 'plate', price: "6,90",
+            desc: "Amanida fresca de temporada amb enciam, tomàquet, olives i ceba.",
+            ingredients: ["Enciam", "Tomàquet", "Olives", "Ceba"]
+          },
+          {
+            name: "Calamars Romana", native: "Calamares Romana", icon: 'plate', price: "16,90",
+            desc: "Anelles de calamar arrebossades i fregides fins a quedar cruixents, servides amb llimona.",
+            ingredients: ["Calamar", "Arrebossat", "Llimona"]
+          },
+          {
+            name: "Menú Infantil", native: "Menor de 16 años", icon: 'burger', price: "10,50",
+            desc: "Menú pensat pels més petits (menors de 16 anys), amb patates i refresc inclosos.",
+            ingredients: ["Nuggets o ales", "Patates", "Refresc"]
+          }
+        ]
+      },
+      {
+        id: 'compartir', gridId: 'grid-compartir', label: 'Per Compartir',
+        items: [
+          {
+            name: "Plat Mixt", native: "Plato Mixto", icon: 'platter', price: "17,90",
+            desc: "Un plat combinat generós amb una selecció de les nostres especialitats: falafel, pollastre, kebab i anelles de ceba. Ideal per compartir.",
+            ingredients: ["Falafel", "Pollastre", "Kebab", "Anelles de ceba", "Patates"]
+          },
+          {
+            name: "Barregeu Graelles", native: "Mezcle Parrillas", icon: 'fish', price: "34,90",
+            desc: "Selecció de peix i marisc a la brasa — sardines, peix i gambes — perfecta per compartir a la taula.",
+            ingredients: ["Sardines", "Peix", "Gambes", "Llimona", "Patates"]
+          },
+          {
+            name: "Mix Grill Carn", native: "Mix Grill Carne", icon: 'chop', price: "34,90",
+            desc: "La nostra selecció completa de carns a la brasa, pensada per compartir entre dos o més comensals.",
+            ingredients: ["Selecció de carns a la brasa", "Patates", "Amanida"]
+          }
+        ]
+      },
+      {
+        id: 'begudes', gridId: 'grid-begudes', label: 'Begudes',
+        items: [
+          {
+            name: "Coca-Cola", native: "Llauna / Lata", icon: 'drink', price: "2,20",
+            desc: "Refresc de cola servit ben fred.", ingredients: ["Coca-Cola"]
+          },
+          {
+            name: "Sprite", native: "Llauna / Lata", icon: 'drink', price: "2,20",
+            desc: "Refresc de llima-llimona servit ben fred.", ingredients: ["Sprite"]
+          },
+          {
+            name: "Nestea", native: "Llauna / Lata", icon: 'drink', price: "2,20",
+            desc: "Te fred amb llimona, refrescant i suau.", ingredients: ["Nestea"]
+          },
+          {
+            name: "Aquarius", native: "Llauna / Lata", icon: 'drink', price: "2,20",
+            desc: "Beguda isotònica, disponible en taronja o llimona.", ingredients: ["Aquarius"]
+          },
+          {
+            name: "Aigua", native: "Agua", icon: 'drink', price: "1,80",
+            desc: "Aigua mineral, amb gas o sense.", ingredients: ["Aigua mineral"]
+          },
+          {
+            name: "Batut de Plàtan", native: "Milkshake Banana", icon: 'shake', price: "3,90",
+            desc: "Batut cremós de plàtan natural amb llet i gel picat.", ingredients: ["Plàtan", "Llet", "Gel"]
+          },
+          {
+            name: "Batut de Mango", native: "Milkshake Mango", icon: 'shake', price: "3,90",
+            desc: "Batut cremós de mango natural amb llet i gel picat.", ingredients: ["Mango", "Llet", "Gel"]
+          },
+          {
+            name: "Té", native: "Tea", icon: 'tea', price: "1,80",
+            desc: "Te calent, servit a l'estil turc en got petit.", ingredients: ["Te negre"]
+          },
+          {
+            name: "Cafè", native: "Coffee", icon: 'cup', price: "1,80",
+            desc: "Cafè calent, sol o amb llet.", ingredients: ["Cafè"]
+          }
+        ]
+      }
+    ];
+
+
+    /* ---------- Full menu translations: Spanish + English ---------- */
+    const MENU_TRANSLATIONS = { "Döner Kebab": ["Döner Kebab", "Döner Kebab", "Chicken / Beef / Mixed / Falafel", "Chicken / Beef / Mixed / Falafel", "El clásico döner turco, cortado directamente del asador vertical y servido caliente en pan de pita con ensalada fresca. Elige pollo, ternera, mixto o falafel. El menú incluye refresco y patatas.", "The classic Turkish döner, carved straight from the vertical spit and served hot in pita bread with fresh salad. Choose chicken, beef, mixed or falafel. The menu includes a soft drink and fries.", ["Carne de döner", "Pan de pita", "Lechuga", "Tomate", "Cebolla", "Salsa"], ["Döner meat", "Pita bread", "Lettuce", "Tomato", "Onion", "Sauce"]], "Döner Solament Carn": ["Döner Solo Carne", "Döner Meat Only", "Solo carne", "Meat only", "El mismo döner clásico, solo con carne y sin pan, ideal como acompañamiento del arroz o para una opción sin pan.", "The same classic döner served with meat only and no bread, ideal with rice or for a bread-free option.", ["Carne de döner", "Lechuga", "Tomate", "Cebolla"], ["Döner meat", "Lettuce", "Tomato", "Onion"]], "Dürüm Kebab": ["Dürüm Kebab", "Dürüm Kebab", "Pollo / Ternera / Mixto / Falafel", "Chicken / Beef / Mixed / Falafel", "Döner envuelto en una fina tortilla de trigo, tostada a la plancha con ensalada y patatas. El menú incluye refresco y patatas.", "Döner wrapped in a thin wheat tortilla, toasted on the grill with salad and fries. The menu includes a soft drink and fries.", ["Tortilla de trigo", "Carne de döner", "Lechuga", "Tomate", "Cebolla roja", "Patatas"], ["Wheat tortilla", "Döner meat", "Lettuce", "Tomato", "Red onion", "Fries"]], "Dürüm Solament Carn": ["Dürüm Solo Carne", "Dürüm Meat Only", "Solo carne", "Meat only", "Dürüm solo de carne, sin verduras extra, para quienes quieren disfrutar del sabor puro del döner.", "Meat-only dürüm with no extra vegetables, for those who want the pure flavour of döner.", ["Tortilla de trigo", "Carne de döner", "Ensalada"], ["Wheat tortilla", "Döner meat", "Salad"]], "Dürüm Seekh Kebab": ["Dürüm Seekh Kebab", "Seekh Kebab Dürüm", "Pollo", "Chicken", "Brochetas de pollo picado y especiado, cocinadas a la brasa y envueltas en dürüm con ensalada fresca y patatas.", "Spiced minced chicken skewers grilled over charcoal and wrapped in dürüm with fresh salad and fries.", ["Pollo picado", "Especias", "Tortilla", "Ensalada", "Patatas"], ["Minced chicken", "Spices", "Tortilla", "Salad", "Fries"]], "Dürüm Tikka Boti": ["Dürüm Tikka Boti", "Tikka Boti Dürüm", "Pollo", "Chicken", "Trozos de pollo marinados en yogur y especias al estilo tikka, cocinados a la parrilla y servidos calientes en dürüm.", "Tikka-style chicken pieces marinated in yogurt and spices, grilled and served hot in dürüm.", ["Pollo marinado", "Yogur", "Especias", "Tortilla", "Ensalada"], ["Marinated chicken", "Yogurt", "Spices", "Tortilla", "Salad"]], "Dürüm Kofta Kebab": ["Dürüm Kofta Kebab", "Kofta Kebab Dürüm", "Ternera", "Beef", "Kofta de ternera picada y especiada, cocinada a la brasa y envuelta en dürüm caliente con ensalada.", "Spiced minced beef kofta grilled over charcoal and wrapped in warm dürüm with salad.", ["Ternera picada", "Especias", "Tortilla", "Ensalada", "Patatas"], ["Minced beef", "Spices", "Tortilla", "Salad", "Fries"]], "Adana Dürüm": ["Adana Dürüm", "Adana Dürüm", "Cordero / Ternera", "Lamb / Beef", "El clásico kebab de Adana: carne picada de cordero o ternera con pimentón picante, cocinada a la brasa y envuelta en dürüm.", "The classic Adana kebab: minced lamb or beef with hot red pepper, grilled over charcoal and wrapped in dürüm.", ["Cordero o ternera picada", "Pimentón", "Grasa de cola", "Cebolla con sumac"], ["Minced lamb or beef", "Red pepper", "Tail fat", "Sumac onion"]], "Plat Combinat": ["Plato Combinado", "Mixed Plate", "Pollo / Ternera / Mixto", "Chicken / Beef / Mixed", "Un plato generoso con la carne que elijas, acompañado de ensalada, patatas y pan. El menú incluye refresco.", "A generous plate with your choice of meat, served with salad, fries and bread. The menu includes a soft drink.", ["Carne de döner", "Patatas", "Ensalada", "Pan"], ["Döner meat", "Fries", "Salad", "Bread"]], "Plat de Falafel": ["Plato de Falafel", "Falafel Plate", "Plato de falafel", "Falafel plate", "Bolitas de falafel caseras hechas con garbanzos y especias, servidas con ensalada, salsa y patatas. Opción vegetariana.", "Homemade falafel made with chickpeas and spices, served with salad, sauce and fries. Vegetarian option.", ["Falafel de garbanzos", "Ensalada", "Salsa tahini", "Pan", "Patatas"], ["Chickpea falafel", "Salad", "Tahini sauce", "Bread", "Fries"]], "Stick de Pollastre": ["Pincho de Pollo", "Chicken Skewer", "Pincho de pollo", "Chicken skewer", "Brocheta de pollo marinado a la brasa, servida con patatas fritas y ensalada fresca.", "Marinated chicken skewer grilled over charcoal, served with fries and fresh salad.", ["Pollo marinado", "Brocheta", "Patatas", "Ensalada"], ["Marinated chicken", "Skewer", "Fries", "Salad"]], "Barregeu la Graella": ["Mix Grill", "Mixed Grill", "Mix Grill", "Mixed grill", "Selección del chef de carnes a la brasa, servidas juntas en un solo plato con patatas y ensalada.", "Chef's selection of grilled meats served together on one plate with fries and salad.", ["Selección de carnes", "Patatas", "Ensalada"], ["Selection of meats", "Fries", "Salad"]], "Bistec a la Planxa": ["Bistec a la Plancha", "Grilled Steak", "Bistec a la plancha", "Grilled steak", "Bistec de ternera a la plancha, sencillo y sabroso, con patatas fritas y ensalada.", "Beef steak grilled on the plancha, simple and flavourful, with fries and salad.", ["Bistec de ternera", "Patatas", "Ensalada"], ["Beef steak", "Fries", "Salad"]], "Pit de Pollastre": ["Pechuga de Pollo", "Chicken Breast", "Pechuga de pollo", "Chicken breast", "Pechuga de pollo a la plancha, tierna y ligera, con guarnición de patatas y tomate.", "Grilled chicken breast, tender and light, served with potatoes and tomato.", ["Pechuga de pollo", "Tomate", "Patatas"], ["Chicken breast", "Tomato", "Potatoes"]], "Entrecot a la Planxa": ["Entrecot a la Plancha", "Grilled Entrecôte", "Entrecot de ternera", "Beef entrecôte", "Entrecot de ternera a la plancha, servido con ensalada fresca, aceitunas y patatas.", "Beef entrecôte grilled on the plancha, served with fresh salad, olives and fries.", ["Entrecot de ternera", "Ensalada", "Aceitunas", "Patatas"], ["Beef entrecôte", "Salad", "Olives", "Fries"]], "Costelles de Xai": ["Costillas de Cordero", "Lamb Chops", "Costillas de cordero", "Lamb chops", "Costillas de cordero a la parrilla, con su sabor característico, acompañadas de ensalada y aceitunas.", "Grilled lamb chops with their distinctive flavour, served with salad and olives.", ["Costillas de cordero", "Aceitunas", "Ensalada", "Patatas"], ["Lamb chops", "Olives", "Salad", "Fries"]], "Plat d'Adana": ["Plato de Adana", "Adana Plate", "Ensalada / Patatas", "Salad / Fries", "El kebab de Adana servido como plato completo, con arroz, ensalada y patatas.", "Adana kebab served as a complete plate with rice, salad and fries.", ["Kebab de Adana", "Arroz", "Ensalada", "Patatas"], ["Adana kebab", "Rice", "Salad", "Fries"]], "Chuletón": ["Chuletón", "T-Bone / Beef Chop", "Ternera", "Beef", "Una pieza generosa de chuletón de ternera a la brasa, para los amantes de la carne, con ensalada y aceitunas.", "A generous charcoal-grilled beef chop for meat lovers, served with salad and olives.", ["Chuletón de ternera", "Ensalada", "Aceitunas", "Patatas"], ["Beef chop", "Salad", "Olives", "Fries"]], "Hamburguesa": ["Hamburguesa", "Burger", "Pollo / Ternera", "Chicken / Beef", "Hamburguesa casera de ternera o pollo con patatas. El menú incluye refresco.", "Homemade beef or chicken burger with fries. The menu includes a soft drink.", ["Hamburguesa de ternera o pollo", "Pan", "Patatas", "Queso opcional"], ["Beef or chicken burger", "Bun", "Fries", "Optional cheese"]], "Plat Seekh Kebab": ["Plato Seekh Kebab", "Seekh Kebab Plate", "Plato Seekh Kebab", "Seekh kebab plate", "Brochetas de seekh kebab a la parrilla, servidas como plato completo con ensalada, tomate y patatas.", "Grilled seekh kebab skewers served as a complete plate with salad, tomato and fries.", ["Brochetas de carne especiada", "Ensalada", "Tomate", "Patatas"], ["Spiced meat skewers", "Salad", "Tomato", "Fries"]], "Biryani de Pollastre": ["Biryani de Pollo", "Chicken Biryani", "Arroz basmati con pollo", "Basmati rice with chicken", "Arroz basmati aromático cocinado con pollo y una mezcla de especias al estilo biryani.", "Aromatic basmati rice cooked with chicken and a blend of biryani spices.", ["Arroz basmati", "Pollo", "Especias biryani"], ["Basmati rice", "Chicken", "Biryani spices"]], "Pollastre Curri": ["Pollo al Curry", "Chicken Curry", "Pollo al curry", "Chicken curry", "Pollo cocinado lentamente en una salsa de curry especiada, un plato reconfortante y sabroso.", "Chicken slowly cooked in a spiced curry sauce, a comforting and flavourful dish.", ["Pollo", "Salsa de curry", "Especias"], ["Chicken", "Curry sauce", "Spices"]], "Biryani Vegetal": ["Biryani Vegetal", "Vegetable Biryani", "Arroz basmati con verduras", "Basmati rice with vegetables", "Versión vegetariana del biryani, con verduras de temporada y el punto justo de especias.", "Vegetarian biryani with seasonal vegetables and just the right level of spice.", ["Arroz basmati", "Verduras de temporada", "Especias"], ["Basmati rice", "Seasonal vegetables", "Spices"]], "Arròs amb Pollastre Curri": ["Arroz con Pollo al Curry", "Rice with Chicken Curry", "Arroz con pollo al curry", "Rice with chicken curry", "Arroz blanco servido con pollo cocinado en salsa de curry aparte.", "White rice served with chicken cooked in curry sauce on the side.", ["Arroz", "Pollo", "Salsa de curry"], ["Rice", "Chicken", "Curry sauce"]], "Cigrons": ["Garbanzos Chana", "Chana Chickpeas", "Chana", "Chana", "Guiso de garbanzos al estilo chana masala, especiado y servido con pan.", "Chickpeas cooked in chana masala style, spiced and served with bread.", ["Garbanzos", "Tomate", "Especias", "Pan"], ["Chickpeas", "Tomato", "Spices", "Bread"]], "Okra": ["Okra", "Okra", "Bhindi", "Bhindi", "Okra guisada con tomate, cebolla y especias, un clásico vegetariano del sur de Asia.", "Okra cooked with tomato, onion and spices, a classic vegetarian South Asian dish.", ["Okra", "Tomate", "Cebolla", "Especias"], ["Okra", "Tomato", "Onion", "Spices"]], "Arròs Blanc": ["Arroz Blanco", "Steamed Basmati Rice", "Arroz basmati al vapor", "Steamed basmati rice", "Arroz basmati blanco al vapor, el acompañamiento perfecto para cualquier curry.", "Steamed white basmati rice, the perfect accompaniment to any curry.", ["Arroz basmati al vapor"], ["Steamed basmati rice"]], "Calamars Romana": ["Calamares a la Romana", "Calamari Fritti", "Calamares", "Calamari", "Anillas de calamar rebozadas y fritas hasta quedar crujientes, servidas con limón.", "Calamari rings coated and fried until crisp, served with lemon.", ["Calamar", "Rebozado", "Limón"], ["Calamari", "Coating", "Lemon"]], "Sardines a la Planxa": ["Sardinas a la Plancha", "Grilled Sardines", "Sardinas a la plancha", "Grilled sardines", "Sardinas frescas a la plancha con un toque de limón y aceite de oliva.", "Fresh sardines grilled on the plancha with a squeeze of lemon and olive oil.", ["Sardinas frescas", "Limón", "Aceite de oliva"], ["Fresh sardines", "Lemon", "Olive oil"]], "Salmó": ["Salmón", "Grilled Salmon", "Salmón", "Salmon", "Filete de salmón a la plancha, servido con patatas y ensalada fresca.", "Grilled salmon fillet served with potatoes and fresh salad.", ["Salmón", "Patatas", "Ensalada"], ["Salmon", "Potatoes", "Salad"]], "Gambes": ["Gambas", "Grilled Prawns", "Gambas", "Prawns", "Gambas a la plancha con ajo y un toque de limón.", "Grilled prawns with garlic and a touch of lemon.", ["Gambas", "Ajo", "Limón"], ["Prawns", "Garlic", "Lemon"]], "Peix Daurada": ["Dorada", "Sea Bream", "Dorada entera", "Whole sea bream", "Dorada entera a la plancha, servida con ensalada y limón.", "Whole sea bream grilled on the plancha, served with salad and lemon.", ["Dorada entera", "Limón", "Ensalada"], ["Whole sea bream", "Lemon", "Salad"]], "Nuggets de Pollastre": ["Nuggets de Pollo", "Chicken Nuggets", "8 unidades", "8 pieces", "Ocho nuggets de pollo rebozados, crujientes por fuera y tiernos por dentro, con salsa.", "Eight breaded chicken nuggets, crispy outside and tender inside, served with sauce.", ["Pollo rebozado", "Salsa"], ["Breaded chicken", "Sauce"]], "Hummus": ["Hummus", "Hummus", "Hummus", "Hummus", "Purée cremoso de garbanzos y tahini con aceite de oliva y limón, servido con pan caliente.", "Creamy chickpea and tahini purée with olive oil and lemon, served with warm bread.", ["Garbanzos", "Tahini", "Limón", "Ajo", "Aceite de oliva", "Pan"], ["Chickpeas", "Tahini", "Lemon", "Garlic", "Olive oil", "Bread"]], "Kofta": ["Kofta", "Kofta", "Kofta", "Kofta", "Bolitas de kofta de carne a la brasa, servidas con patatas fritas.", "Charcoal-grilled meat kofta served with fries.", ["Kofta de carne", "Patatas"], ["Meat kofta", "Fries"]], "Alitas de Pollastre": ["Alitas de Pollo", "Chicken Wings", "Alitas de pollo", "Chicken wings", "Alitas de pollo a la parrilla, servidas con ensalada y salsa.", "Grilled chicken wings served with salad and sauce.", ["Alitas de pollo", "Ensalada", "Salsa"], ["Chicken wings", "Salad", "Sauce"]], "Patates amb Ous Fregits": ["Patatas con Huevos Fritos", "Fries with Fried Eggs", "Patatas fritas", "Fries", "Patatas fritas con dos huevos fritos por encima — sencillo y reconfortante.", "Fries topped with two fried eggs — simple and comforting.", ["Patatas fritas", "Huevos fritos"], ["Fries", "Fried eggs"]], "Amanida Mixta": ["Ensalada Mixta", "Mixed Salad", "Ensalada mixta", "Mixed salad", "Ensalada fresca de temporada con lechuga, tomate, aceitunas y cebolla.", "Fresh seasonal salad with lettuce, tomato, olives and onion.", ["Lechuga", "Tomate", "Aceitunas", "Cebolla"], ["Lettuce", "Tomato", "Olives", "Onion"]], "Menú Infantil": ["Menú Infantil", "Kids' Menu", "Menores de 16 años", "Under 16", "Menú pensado para los más pequeños (menores de 16 años), con patatas y refresco incluidos.", "Menu designed for children under 16, including fries and a soft drink.", ["Nuggets o alitas", "Patatas", "Refresco"], ["Nuggets or wings", "Fries", "Soft drink"]], "Plat Mixt": ["Plato Mixto", "Mixed Platter", "Plato mixto", "Mixed platter", "Un plato combinado generoso con una selección de nuestras especialidades: falafel, pollo, kebab y aros de cebolla. Ideal para compartir.", "A generous mixed platter featuring some of our favourites: falafel, chicken, kebab and onion rings. Ideal for sharing.", ["Falafel", "Pollo", "Kebab", "Aros de cebolla", "Patatas"], ["Falafel", "Chicken", "Kebab", "Onion rings", "Fries"]], "Barregeu Graelles": ["Parrillada de Pescado", "Mixed Seafood Grill", "Parrillada de pescado", "Fish grill", "Selección de pescado y marisco a la brasa — sardinas, pescado y gambas — perfecta para compartir en la mesa.", "Selection of grilled fish and seafood — sardines, fish and prawns — perfect for sharing.", ["Sardinas", "Pescado", "Gambas", "Limón", "Patatas"], ["Sardines", "Fish", "Prawns", "Lemon", "Fries"]], "Mix Grill Carn": ["Mix Grill de Carne", "Mixed Meat Grill", "Mix Grill de carne", "Mixed meat grill", "Nuestra selección completa de carnes a la brasa, pensada para compartir entre dos o más comensales.", "Our full selection of charcoal-grilled meats, designed to share between two or more guests.", ["Selección de carnes a la brasa", "Patatas", "Ensalada"], ["Selection of grilled meats", "Fries", "Salad"]], "Coca-Cola": ["Coca-Cola", "Coca-Cola", "Lata", "Can", "Refresco de cola servido bien frío.", "Chilled cola soft drink.", ["Coca-Cola"], ["Coca-Cola"]], "Sprite": ["Sprite", "Sprite", "Lata", "Can", "Refresco de lima-limón servido bien frío.", "Chilled lemon-lime soft drink.", ["Sprite"], ["Sprite"]], "Nestea": ["Nestea", "Nestea", "Lata", "Can", "Té frío con limón, refrescante y suave.", "Refreshing iced tea with lemon.", ["Nestea"], ["Nestea"]], "Aquarius": ["Aquarius", "Aquarius", "Lata", "Can", "Bebida isotónica, disponible en naranja o limón.", "Sports drink, available in orange or lemon.", ["Aquarius"], ["Aquarius"]], "Aigua": ["Agua", "Water", "Agua", "Water", "Agua mineral, con gas o sin gas.", "Mineral water, sparkling or still.", ["Agua mineral"], ["Mineral water"]], "Batut de Plàtan": ["Batido de Plátano", "Banana Milkshake", "Batido de plátano", "Banana milkshake", "Batido cremoso de plátano natural con leche y hielo picado.", "Creamy fresh banana milkshake with milk and crushed ice.", ["Plátano", "Leche", "Hielo"], ["Banana", "Milk", "Ice"]], "Batut de Mango": ["Batido de Mango", "Mango Milkshake", "Batido de mango", "Mango milkshake", "Batido cremoso de mango natural con leche y hielo picado.", "Creamy fresh mango milkshake with milk and crushed ice.", ["Mango", "Leche", "Hielo"], ["Mango", "Milk", "Ice"]], "Té": ["Té", "Tea", "Té", "Tea", "Té caliente servido al estilo turco en un vaso pequeño.", "Hot tea served Turkish-style in a small glass.", ["Té negro"], ["Black tea"]], "Cafè": ["Café", "Coffee", "Café", "Coffee", "Café caliente, solo o con leche.", "Hot coffee, black or with milk.", ["Café"], ["Coffee"]] };
+
+    function menuText(item, field) {
+      const t = MENU_TRANSLATIONS[item.name];
+      if (!t) return item[field];
+      const lang = CURRENT_LANG;
+      if (field === 'name') return lang === 'en' ? t[1] : t[0];
+      if (field === 'native') return lang === 'en' ? t[3] : t[2];
+      if (field === 'desc') return lang === 'en' ? t[5] : t[4];
+      if (field === 'ingredients') return lang === 'en' ? t[7] : t[6];
+      return item[field];
+    }
+
+    const CATEGORY_TRANSLATIONS = {
+      es: { 'Kebabs & Dürüm': 'Kebabs & Dürüm', 'A la Graella': 'Parrilla', 'Asiático': 'Asiático', 'Del Mar': 'Mariscos', 'Entrants': 'Entrantes', 'Per Compartir': 'Para compartir', 'Begudes': 'Bebidas' },
+      en: { 'Kebabs & Dürüm': 'Kebabs & Dürüm', 'A la Graella': 'Grill', 'Asiático': 'Asian', 'Del Mar': 'Seafood', 'Entrants': 'Starters', 'Per Compartir': 'Sharing', 'Begudes': 'Drinks' }
+    };
+    function categoryText(label) { return (CATEGORY_TRANSLATIONS[CURRENT_LANG] && CATEGORY_TRANSLATIONS[CURRENT_LANG][label]) || label; }
+
+    /* ---------- Render ---------- */
+    function priceRowHTML(item) {
+      if (item.solo && item.menu) {
+        const soloLabel = CURRENT_LANG === 'en' ? 'Single' : 'Solo';
+        const menuLabel = CURRENT_LANG === 'en' ? 'Menu' : 'Menú';
+        return '<div class="price-chip"><span class="tag">' + soloLabel + '</span><b>' + item.solo + ' €</b></div>'
+          + '<div class="price-chip"><span class="tag">' + menuLabel + '</span><b>' + item.menu + ' €</b></div>';
+      }
+      return '<div class="price-chip"><b>' + item.price + ' €</b></div>';
+    }
+
+    function ingredientsHTML(item) {
+      return menuText(item, 'ingredients').map(function (i) { return '<span>' + i + '</span>'; }).join('');
+    }
+
+    let ITEM_INDEX = 0;
+    const FLAT_ITEMS = [];
+
+    CATEGORIES.forEach(function (cat) {
+      const grid = document.getElementById(cat.gridId);
+      cat.items.forEach(function (item) {
+        const id = ITEM_INDEX++;
+        item._id = id;
+        item._category = cat.label;
+        FLAT_ITEMS.push(item);
+
+        const btn = document.createElement('button');
+        btn.className = 'dish';
+        btn.type = 'button';
+        btn.setAttribute('data-id', id);
+        btn.innerHTML =
+          '<div class="tile-corner"></div>' +
+          '<div class="dish-photo">' + svgIcon(item.icon) + '<span class="ph-tap">tap for detail</span><span class="ph-label">photo</span></div>' +
+          '<div class="dish-body">' +
+          '<div class="dish-native">' + menuText(item, 'native') + '</div>' +
+          '<h3>' + menuText(item, 'name') + '</h3>' +
+          '<div class="price-row">' + priceRowHTML(item) + '</div>' +
+          '<div class="ingredients">' + ingredientsHTML(item) + '</div>' +
+          '</div>';
+        btn.addEventListener('click', function () { openModal(id); });
+        grid.appendChild(btn);
+      });
+    });
+
+    /* ---------- Modal ---------- */
+    const overlay = document.getElementById('modalOverlay');
+    const modalClose = document.getElementById('modalClose');
+
+    function openModal(id) {
+      const item = FLAT_ITEMS[id];
+      document.getElementById('modalCategory').textContent = categoryText(item._category);
+      document.getElementById('modalTitle').textContent = menuText(item, 'name');
+      document.getElementById('modalNative').textContent = menuText(item, 'native');
+      document.getElementById('modalDesc').textContent = menuText(item, 'desc');
+      document.getElementById('modalPrice').innerHTML = priceRowHTML(item);
+      document.getElementById('modalIngredients').innerHTML = ingredientsHTML(item);
+      document.getElementById('modalPhoto').innerHTML = item.image
+        ? '<img src="' + item.image + '" alt="' + menuText(item, 'name') + '">'
+        : svgIcon(item.icon) + '<span class="ph-label">' + UI_TRANSLATIONS[CURRENT_LANG]['modal.photo'] + '</span>';
+      overlay.classList.add('open');
+      document.body.classList.add('modal-open');
+      modalClose.focus();
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.classList.remove('modal-open');
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+    /* ---------- Nav ---------- */
+    const toggle = document.getElementById('navToggle');
+    const navList = document.getElementById('navList');
+    toggle.addEventListener('click', function () {
+      const open = navList.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    navList.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        navList.classList.remove('open');
+        toggle.setAttribute('aria-expanded', false);
+      });
+    });
+
+    const sections = document.querySelectorAll('section.menu-section[id]');
+    const links = document.querySelectorAll('nav a');
+    const navObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id); });
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px' });
+    sections.forEach(function (s) { navObserver.observe(s); });
+
+    const dishObserver = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.dish').forEach(function (d) { dishObserver.observe(d); });
+    applyLanguage(CURRENT_LANG);
+
+
+    /* Optional real dish photos.
+       Put files in an /images folder and add entries like:
+       PHOTO_MAP["Döner Kebab"]="images/doner-kebab.jpg";
+    */
+    const PHOTO_MAP = {
+      "Biryani de Pollastre": "images/biryani.png",
+      "Biryani Vegetal": "images/vegetablebiryani.png",
+      "Arròs Blanc": "images/planerice.png",
+      "Dürüm Kebab": "images/durumkebab.png",
+      "Plat d'Adana": "images/platodeadana.png",
+      "Costelles de Xai": "images/ribbss.png",
+      "Okra": "images/bhindi.png",
+      "Entrecot a la Planxa": "images/entrecotdeplanxa.png",
+      "Barregeu la Graella": "images/mixgrill.png",
+      "Plat Seekh Kebab": "images/platseekhkebaab.png",
+      "Salmó": "images/salmon.jpeg",
+      "Plat Combinat": "images/plato.png",
+      "Chuletón": "images/chuleeton.png",
+      "Hamburguesa": "images/burgur.png",
+      "Bistec a la Planxa": "images/bistecdeplanxa.png",
+      "Pollastre Curri": "images/chickencurry.png",
+      "Arròs amb Pollastre Curri": "images/ricecurry.png",
+      "Cigrons": "images/chana.png",
+
+
+      "Döner Kebab": "images/donerkebab.png",
+      "Adana Dürüm": "images/durumadana.png",
+      "Dürüm Tikka Boti": "images/durumtikkaboti.png",
+      "Dürüm Kofta Kebab": "images/durumkofta.png",
+      "Dürüm Seekh Kebab": "images/durumseekh.png",
+      "Alitas de Pollastre": "images/alitasdepollo.png",
+      "Nuggets de Pollastre": "images/nuggetsdepollo.png",
+      "Patates amb Ous Fregits": "images/patatasconeggs.png",
+      "Kofta": "images/kofta.png",
+      "Plat de Falafel": "images/flafel.png",
+      "Hummus": "images/hummus.png",
+      "Amanida Mixta": "images/ensalada.png",
+      "Dürüm Solament Carn": "images/durumkebabcarne.png",
+      "Döner Solament Carn": "images/donerkebabcarne.png",
+      "Stick de Pollastre": "images/pinchodepollo.png",
+      "Pit de Pollastre": "images/pechugadeepollo.png",
+      "Hamburguesa Plate": "images/humburguesa.png",
+
+      "Mix Grill Carn": "images/mixgrillcarne.png",
+      "Plat Mixt": "images/mixplate.png",
+      "Barregeu Graelles": "images/mixseafoodgrill.png",
+
+      "Menú Infantil": "images/kidsmenu.png",
+      "Gambes": "images/gambas.png",
+      "Peix Daurada": "images/seabream.png",
+      "Sardines a la Planxa": "images/sardines.png",
+
+      "Calamars Romana": "images/calamars.png",
+
+
+
+
+
+
+      "Coca-Cola": "images/cocacola.png",
+      "Sprite": "images/sprite.png",
+      "Nestea": "images/nestea.png",
+      "Aquarius": "images/aquarius.png",
+      "Aigua": "images/agua.png",
+      "Batut de Plàtan": "images/bananamilkshake.png",
+      "Batut de Mango": "images/mangomilkshake.png",
+      "Té": "images/tea.png",
+      "Cafè": "images/coffee.png",
+
+
+
+
+
+
+
+
+
+    };
+
+    Object.keys(PHOTO_MAP).forEach(function (name) {
+      const item = FLAT_ITEMS.find(function (x) { return x.name === name; });
+      if (!item) return;
+      item.image = PHOTO_MAP[name];
+      const card = document.querySelector('.dish[data-id="' + item._id + '"]');
+      if (card) {
+        const photo = card.querySelector('.dish-photo');
+        photo.innerHTML = '<img src="' + item.image + '" alt="' + item.name + '" loading="lazy"><span class="ph-tap">tap for detail</span>';
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>
